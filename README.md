@@ -1,4 +1,4 @@
-# Student Management SYstem using Asp.net ans C#
+# Student Management SYstem using Asp.net and C#
 
 ## Login Page
 <img width="650" alt="image" src="https://github.com/mkswagger/loginpage_task1/assets/34826479/a3252a5d-71c4-473f-afdf-30f3b31707a2">
