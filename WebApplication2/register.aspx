@@ -79,16 +79,45 @@
             </td>
         </tr>
         <tr>
+            <td>
+                Course
+            </td>
+            <td>
+                
+               <asp:DropDownList ID="ddlCourse" runat="server">
+                   <asp:ListItem Text="B Tech" Value="1"></asp:ListItem>
+                   <asp:ListItem Text="BBA" Value="2"></asp:ListItem>
+                   <asp:ListItem Text="MBBS" Value="3"></asp:ListItem>
+        
+            </asp:DropDownList>
+            </td>
             
-            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                <asp:RadioButton ID="rbOption1" runat="server" Text="Male" Checked="True"  />
+           
+                <asp:RadioButton ID="rbOption2" runat="server" Text="Female" />
+                
+            </td>
+        </tr>
+        <tr>
+            
             <td>
                 <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" />
+     
+            </td>
+            <td>
+                <asp:Button ID="btnReset" runat="server" OnClick="Button1_Click" Text="Reset" />
      
             </td>
         </tr>
         <tr>
             <td>&nbsp;</td>
-            <td>Not Registered Yet?&nbsp&nbsp;<a href="#">Click Here</a> to Register</td>
+            <td>
+                <br />
+                To login &nbsp&nbsp;<a href="login.aspx">Click Here</a> </td>
         </tr>
     </table>
     </center>
