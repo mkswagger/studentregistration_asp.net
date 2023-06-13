@@ -5,6 +5,66 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #5364ac;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        table {
+            background-color: #5180ae;
+            padding: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+
+        td {
+            padding: 5px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: small;
+            display: block;
+        }
+
+        .register-link {
+            font-size: small;
+        }
+        #btnLogin {
+            background-color: #4169e1;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        #btnLogin:hover {
+            background-color: #1e90ff;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -58,7 +118,7 @@
         </tr>
         <tr>
             <td>&nbsp;</td>
-            <td>Not Registered Yet?&nbsp&nbsp;<a href="#">Click Here</a> to Register</td>
+            <td>Not Registered Yet?&nbsp&nbsp;<a href="register.aspx">Click Here</a> to Register</td>
         </tr>
     </table>
     </center>
