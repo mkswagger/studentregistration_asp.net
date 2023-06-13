@@ -26,7 +26,7 @@ namespace WebApplication2
             }
             else
             {
-                lblMessage.Text = "Invalid Username";
+                lblMessage.Text = "Invalid Username or password";
                 lblMessage.ForeColor = Color.Red;
             }
         }

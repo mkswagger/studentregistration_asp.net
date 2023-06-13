@@ -56,6 +56,10 @@
      
             </td>
         </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>Not Registered Yet?&nbsp&nbsp;<a href="#">Click Here</a> to Register</td>
+        </tr>
     </table>
     </center>
     </form>
