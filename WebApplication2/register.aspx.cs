@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,7 +17,8 @@ namespace WebApplication2
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-
+            lblMessage.Text = "Invalid Username or password";
+            lblMessage.ForeColor = Color.Red;
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
