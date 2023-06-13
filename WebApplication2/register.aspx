@@ -70,13 +70,12 @@
          
         </tr>
         <tr>
-            <td>&nbsp;</td>
-      
             <td>
                 DOB
             </td>
             <td>
-                 <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" />
+                 <asp:TextBox ID="Calender" runat="server" Placeholder="DOB" ></asp:TextBox>
+                 <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="Calender" />
             </td>
         </tr>
         <tr>
