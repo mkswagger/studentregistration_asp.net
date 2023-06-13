@@ -103,16 +103,24 @@
             </td>
         </tr>
         <tr>
+            <td>Image</td>
+            <td>
+                <asp:FileUpload ID="ImgUpload" runat="server" />
+            </td>
+        </tr>
+        <tr>
             
             <td>
                 <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" />
      
             </td>
             <td>
-                <asp:Button ID="btnReset" runat="server" OnClick="Button1_Click" Text="Reset" />
+                <asp:Button ID="btnReset" runat="server" OnClick="btnReset_Click" Text="Reset" />
      
             </td>
         </tr>
+        
+        
         <tr>
             <td>&nbsp;</td>
             <td>
