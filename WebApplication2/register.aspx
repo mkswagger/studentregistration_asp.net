@@ -110,7 +110,7 @@
                 DOB
             </td>
             <td>
-                 <asp:TextBox ID="Calender" runat="server" Placeholder="DOB" ></asp:TextBox>
+                 <asp:TextBox ID="Calender" runat="server" Placeholder="DOB" AutoComplete="off" ></asp:TextBox>
                  <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="Calender" />
             </td>
         </tr>
@@ -132,10 +132,8 @@
         <tr>
             <td>Gender</td>
             <td>
-                <asp:RadioButton ID="rbOption1" runat="server" Text="Male" Checked="True"  />
-           
-                <asp:RadioButton ID="rbOption2" runat="server" Text="Female" />
-                
+                <asp:RadioButton ID="rbOption1" runat="server" Text="Male" Checked="True" GroupName="genderGroup" />
+                <asp:RadioButton ID="rbOption2" runat="server" Text="Female" GroupName="genderGroup" />
             </td>
         </tr>
         <tr>
