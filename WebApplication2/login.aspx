@@ -35,7 +35,25 @@
                 <asp:Label ID="lblPassword" runat="server" Text="Password"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" MaxLength="10"></asp:TextBox>
+                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" MaxLength="10" ></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            
+               <td>&nbsp;</td>
+            <td>
+                <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ErrorMessage="Please enter your Password"  Font-Size="Small" ForeColor="Red" ControlToValidate ="txtPassword"></asp:RequiredFieldValidator>
+                <br />
+                <asp:Label ID="lblMessage" runat="server" Font-Size="Small" Text="Label" Visible="false" ></asp:Label>
+            </td>
+         
+        </tr>
+        <tr>
+            
+            <td>&nbsp;</td>
+            <td>
+                <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click1" />
+     
             </td>
         </tr>
     </table>

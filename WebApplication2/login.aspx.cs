@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,5 +14,23 @@ namespace WebApplication2
         {
 
         }
+
+
+        protected void btnLogin_Click1(object sender, EventArgs e)
+        {
+            lblMessage.Visible = true;
+            if(txtUsername.Text=="admin" && txtPassword.Text=="admin")
+            {
+                lblMessage.Text = "Login Success";
+                lblMessage.ForeColor = Color.Green;
+            }
+            else
+            {
+                lblMessage.Text = "Invalid Username";
+                lblMessage.ForeColor = Color.Red;
+            }
+        }
+
+       
     }
 }
