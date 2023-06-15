@@ -106,7 +106,7 @@
             
                <td>Password</td>
             <td>
-                <asp:TextBox ID="txtEmail0" runat="server" Placeholder="Email" Autocomplete="off" ></asp:TextBox>
+                <asp:TextBox ID="txtPassword" runat="server" Placeholder="Password" Autocomplete="off" ></asp:TextBox>
             </td>
          
         </tr>
@@ -114,7 +114,7 @@
             
                <td>&nbsp;</td>
             <td>
-                <asp:RequiredFieldValidator ID="rfvEmail0" runat="server" ErrorMessage="Please enter your Password"  Font-Size="Small" ForeColor="Red" ControlToValidate ="txtEmail"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="rfPassword" runat="server" ErrorMessage="Please enter your Password"  Font-Size="Small" ForeColor="Red" ControlToValidate ="txtPassword"></asp:RequiredFieldValidator>
                 </td>
          
         </tr>
@@ -122,7 +122,7 @@
             
                <td>Confirm Password</td>
             <td>
-                <asp:TextBox ID="txtEmail1" runat="server" Placeholder="Email" Autocomplete="off" ></asp:TextBox>
+                <asp:TextBox ID="txtCpassword" runat="server" Placeholder="Password" Autocomplete="off" ></asp:TextBox>
                </td>
          
         </tr>
@@ -130,7 +130,7 @@
             
                <td>&nbsp;</td>
             <td>
-                <asp:RequiredFieldValidator ID="rfvEmail1" runat="server" ErrorMessage="Please enter your Password"  Font-Size="Small" ForeColor="Red" ControlToValidate ="txtEmail"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="rfvCPassword" runat="server" ErrorMessage="Please enter your Password"  Font-Size="Small" ForeColor="Red" ControlToValidate ="txtCpassword"></asp:RequiredFieldValidator>
                 </td>
          
         </tr>
