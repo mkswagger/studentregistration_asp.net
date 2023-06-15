@@ -128,14 +128,12 @@
          
         </tr>
         <tr>
-            
-               <td>&nbsp;</td>
-            <td>
-                <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="CompareValidator" Font-Size="Small" ForeColor="Red" ValueToCompare="txtPassword" ControlToValidate="txtCpassword"></asp:CompareValidator>
-                <asp:RequiredFieldValidator ID="rfvCPassword" runat="server" ErrorMessage="Please enter your Password"  Font-Size="Small" ForeColor="Red" ControlToValidate ="txtCpassword"></asp:RequiredFieldValidator>
-                </td>
-         
-        </tr>
+         <td>&nbsp;</td>
+         <td>
+              <asp:CompareValidator ID="cvPassword" runat="server" ErrorMessage="Passwords do not match" Font-Size="Small" ForeColor="Red" ControlToValidate="txtCpassword" Operator="Equal" Type="String" ValidationGroup="registration" ValueToCompare="#txtPassword"></asp:CompareValidator>
+              <asp:RequiredFieldValidator ID="rfvCPassword" runat="server" ErrorMessage="Please confirm your Password" Font-Size="Small" ForeColor="Red" ControlToValidate="txtCpassword"></asp:RequiredFieldValidator>
+        </td>
+       </tr>
         <tr>
             <td>
                 DOB

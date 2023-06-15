@@ -25,15 +25,23 @@ namespace WebApplication2
            string email=txtEmail.Text.ToString();
            string course=ddlCourse.SelectedItem.ToString();
        
-           string date=txtDOB.Text.ToString();
-           if(txtDOB.Text.Trim().ToString()!= "")
-            {
-                DateTime dob = DateTime.Parse(txtDOB.Text.ToString());
-            }
-
+           string date=txtDOB.Text.ToString().Trim();
 
             if (ImgUpload.HasFiles)
             {
+                DateTime dob;
+
+                if (!string.IsNullOrEmpty(date) && DateTime.TryParse(date, out dob))
+                {
+                    // Date parsing successful
+                    string formattedDate = dob.ToString("yyyy-MM-dd");
+                    //lblMessage.Text = "Date of Birth: " + formattedDate;
+                }
+                else
+                {
+                    // Date parsing failed
+                    //lblMessage.Text = "Invalid Date of Birth";
+                }
                 string filename=ImgUpload.FileName;
                 ImgUpload.SaveAs(Server.MapPath("images//" + ImgUpload.FileName));
             }
