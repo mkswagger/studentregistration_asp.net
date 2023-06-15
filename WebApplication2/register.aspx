@@ -83,7 +83,6 @@
             <td>
                 <asp:RequiredFieldValidator ID="rfMobile" runat="server" ErrorMessage="Please enter your Mobile no"  Font-Size="Small" ForeColor="Red" ControlToValidate ="txtMobile"></asp:RequiredFieldValidator>
                 <br />
-                <asp:Label ID="lblMobile" runat="server" Font-Size="Small" Text="Label" Visible="false" ></asp:Label>
             </td>
          
         </tr>
@@ -100,9 +99,39 @@
                <td>&nbsp;</td>
             <td>
                 <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="Please enter your Email id"  Font-Size="Small" ForeColor="Red" ControlToValidate ="txtEmail"></asp:RequiredFieldValidator>
-                <br />
-                <asp:Label ID="lblEmail" runat="server" Font-Size="Small" Text="Label" Visible="false" ></asp:Label>
+                </td>
+         
+        </tr>
+        <tr>
+            
+               <td>Password</td>
+            <td>
+                <asp:TextBox ID="txtEmail0" runat="server" Placeholder="Email" Autocomplete="off" ></asp:TextBox>
             </td>
+         
+        </tr>
+        <tr>
+            
+               <td>&nbsp;</td>
+            <td>
+                <asp:RequiredFieldValidator ID="rfvEmail0" runat="server" ErrorMessage="Please enter your Password"  Font-Size="Small" ForeColor="Red" ControlToValidate ="txtEmail"></asp:RequiredFieldValidator>
+                </td>
+         
+        </tr>
+        <tr>
+            
+               <td>Confirm Password</td>
+            <td>
+                <asp:TextBox ID="txtEmail1" runat="server" Placeholder="Email" Autocomplete="off" ></asp:TextBox>
+               </td>
+         
+        </tr>
+        <tr>
+            
+               <td>&nbsp;</td>
+            <td>
+                <asp:RequiredFieldValidator ID="rfvEmail1" runat="server" ErrorMessage="Please enter your Password"  Font-Size="Small" ForeColor="Red" ControlToValidate ="txtEmail"></asp:RequiredFieldValidator>
+                </td>
          
         </tr>
         <tr>
@@ -141,6 +170,11 @@
             <td>
                 <asp:FileUpload ID="ImgUpload" runat="server" />
             </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                &nbsp;</td>
         </tr>
         <tr>
             
