@@ -98,6 +98,7 @@
             
                <td>&nbsp;</td>
             <td>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="invalid email" Font-Size="Small" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail"></asp:RegularExpressionValidator>
                 <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="Please enter your Email id"  Font-Size="Small" ForeColor="Red" ControlToValidate ="txtEmail"></asp:RequiredFieldValidator>
                 </td>
          
@@ -106,7 +107,7 @@
             
                <td>Password</td>
             <td>
-                <asp:TextBox ID="txtPassword" runat="server" Placeholder="Password" Autocomplete="off" ></asp:TextBox>
+                <asp:TextBox ID="txtPassword" runat="server" Placeholder="Password" Autocomplete="off" TextMode="Password" ></asp:TextBox>
             </td>
          
         </tr>
@@ -122,7 +123,7 @@
             
                <td>Confirm Password</td>
             <td>
-                <asp:TextBox ID="txtCpassword" runat="server" Placeholder="Password" Autocomplete="off" ></asp:TextBox>
+                <asp:TextBox ID="txtCpassword" runat="server" Placeholder="Password" Autocomplete="off" TextMode="Password" ></asp:TextBox>
                </td>
          
         </tr>
@@ -130,6 +131,7 @@
             
                <td>&nbsp;</td>
             <td>
+                <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="CompareValidator" Font-Size="Small" ForeColor="Red" ValueToCompare="txtPassword" ControlToValidate="txtCpassword"></asp:CompareValidator>
                 <asp:RequiredFieldValidator ID="rfvCPassword" runat="server" ErrorMessage="Please enter your Password"  Font-Size="Small" ForeColor="Red" ControlToValidate ="txtCpassword"></asp:RequiredFieldValidator>
                 </td>
          
@@ -139,8 +141,8 @@
                 DOB
             </td>
             <td>
-                 <asp:TextBox ID="Calender" runat="server" Placeholder="DOB" AutoComplete="off" ></asp:TextBox>
-                 <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="Calender" />
+                 <asp:TextBox ID="txtDOB" runat="server" Placeholder="DOB" AutoComplete="off" ></asp:TextBox>
+                 <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtDOB" />
             </td>
         </tr>
         <tr>

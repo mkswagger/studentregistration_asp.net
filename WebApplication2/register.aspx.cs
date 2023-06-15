@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,6 +11,8 @@ namespace WebApplication2
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
+        private object lblMessage;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,9 +23,15 @@ namespace WebApplication2
            string name=txtName.Text.ToString();
            string mobile=txtMobile.Text.ToString();
            string email=txtEmail.Text.ToString();
-           string course=ddlCourse.SelectedItem.ToString(); 
-           string date=Calender.Text.ToString();
-           DateTime dob= DateTime.Parse(date);
+           string course=ddlCourse.SelectedItem.ToString();
+       
+           string date=txtDOB.Text.ToString();
+           if(txtDOB.Text.Trim().ToString()!= "")
+            {
+                DateTime dob = DateTime.Parse(txtDOB.Text.ToString());
+            }
+
+
             if (ImgUpload.HasFiles)
             {
                 string filename=ImgUpload.FileName;

@@ -87,6 +87,15 @@ namespace WebApplication2
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+
+        /// <summary>
         /// rfvEmail control.
         /// </summary>
         /// <remarks>
@@ -123,6 +132,15 @@ namespace WebApplication2
         protected global::System.Web.UI.WebControls.TextBox txtCpassword;
 
         /// <summary>
+        /// CompareValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
+
+        /// <summary>
         /// rfvCPassword control.
         /// </summary>
         /// <remarks>
@@ -132,13 +150,13 @@ namespace WebApplication2
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCPassword;
 
         /// <summary>
-        /// Calender control.
+        /// txtDOB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Calender;
+        protected global::System.Web.UI.WebControls.TextBox txtDOB;
 
         /// <summary>
         /// CalendarExtender1 control.
