@@ -73,6 +73,7 @@
     <center>
     <h1>Login Page</h1>
     <br />
+    <asp:Label ID="LoginPage" runat="server" Text="Login Page"></asp:Label>
     <table>
         <tr>
             <td>
