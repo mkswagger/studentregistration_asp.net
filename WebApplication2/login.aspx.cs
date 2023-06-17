@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,7 @@ namespace WebApplication2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lblLoginPage.Text= ConfigurationManager.AppSettings["LoginPage"].ToString();
         }
 
 

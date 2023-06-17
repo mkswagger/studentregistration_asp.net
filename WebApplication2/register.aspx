@@ -150,9 +150,7 @@
             <td>
                 
                <asp:DropDownList ID="ddlCourse" runat="server">
-                   <asp:ListItem Text="B Tech" Value="1"></asp:ListItem>
-                   <asp:ListItem Text="BBA" Value="2"></asp:ListItem>
-                   <asp:ListItem Text="MBBS" Value="3"></asp:ListItem>
+     
         
             </asp:DropDownList>
             </td>

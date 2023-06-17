@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -15,7 +18,22 @@ namespace WebApplication2
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            FnBindCourse();
+        }
 
+        void FnBindCourse()
+        {
+            SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString);
+            string query = "select * from coursedetails";
+            SqlCommand cmd = new SqlCommand(query, con);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            adp.Fill(dt);
+
+            ddlCourse.DataSource = dt;
+            ddlCourse.DataTextField = "CourseName";
+            ddlCourse.DataValueField = "CourseID";
+            ddlCourse.DataBind();
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)

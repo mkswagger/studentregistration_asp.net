@@ -24,13 +24,13 @@ namespace WebApplication2
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// LoginPage control.
+        /// lblLoginPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LoginPage;
+        protected global::System.Web.UI.WebControls.Label lblLoginPage;
 
         /// <summary>
         /// lblUsername control.
