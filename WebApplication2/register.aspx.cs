@@ -50,7 +50,7 @@ namespace WebApplication2
             string mobile = txtMobile.Text.ToString();
             string email = txtEmail.Text.ToString();
             string course = ddlCourse.SelectedItem.ToString();
-            string gender = rblGender.SelectedItem.Text.ToString();
+            string gender = rblGgender.SelectedItem.Text.ToString();
             string date = txtDOB.Text.ToString().Trim();
             string password = txtPassword.Text.ToString();
             string filename = "";
@@ -71,7 +71,7 @@ namespace WebApplication2
                     //lblMessage.Text = "Invalid Date of Birth";
                 }
                 string filename = ImgUpload.FileName;
-                ImgUpload.SaveAs(Server.MapPath("images//" + ImgUpload.FileName));
+                ImgUpload.SaveAs(Server.MapPath("images//" + filename));
             }
 
             SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString);

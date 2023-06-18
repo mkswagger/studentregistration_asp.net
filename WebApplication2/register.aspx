@@ -40,6 +40,10 @@
         .login-link:hover {
             color: #FF8C00; /* Dark orange on hover */
         }
+        .horizontal-list {
+            display: inline-block;
+        }
+
     </style>
 </head>
 <body>
@@ -160,9 +164,11 @@
           <td>
              Gender
           </td>  
-           <td id="rblGender">
-             <asp:RadioButton ID="rbOption1" runat="server" Text="Male" Checked="True" GroupName="genderGroup" />
-             <asp:RadioButton ID="rbOption2" runat="server" Text="Female" GroupName="genderGroup" />
+           <td>
+               <asp:RadioButtonList ID="rblGgender" runat="server" CssClass="horizontal-list">
+                      <asp:ListItem Value="1">Male</asp:ListItem>
+                      <asp:ListItem Value="2">Female</asp:ListItem>
+               </asp:RadioButtonList>
            </td>
 
         </tr>
