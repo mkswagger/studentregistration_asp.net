@@ -45,7 +45,7 @@ namespace WebApplication2
             string name = txtName.Text.ToString();
             string mobile = txtMobile.Text.ToString();
             string email = txtEmail.Text.ToString();
-            string course = ddlCourse.SelectedItem.Text.ToString();
+            string courses = ddlCourse.SelectedValue.ToString();
             string gender = rblGgender.SelectedItem.Text.ToString();
             string date = txtDOB.Text.ToString().Trim();
             string password = txtPassword.Text.ToString();
@@ -81,7 +81,7 @@ namespace WebApplication2
             cmd.Parameters.AddWithValue("@Email", email);
             cmd.Parameters.AddWithValue("@Gender", gender);
             cmd.Parameters.AddWithValue("@DOB", date);
-            cmd.Parameters.AddWithValue("@Course", course);
+            cmd.Parameters.AddWithValue("@Course", courses);
             cmd.Parameters.AddWithValue("@Image", filename);
             cmd.Parameters.AddWithValue("@Password", password);
             cmd.ExecuteNonQuery();
