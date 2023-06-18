@@ -49,7 +49,7 @@ namespace WebApplication2
             string name = txtName.Text.ToString();
             string mobile = txtMobile.Text.ToString();
             string email = txtEmail.Text.ToString();
-            string course = ddlCourse.SelectedItem.ToString();
+            string course = ddlCourse.SelectedItem.Text.ToString();
             string gender = rblGgender.SelectedItem.Text.ToString();
             string date = txtDOB.Text.ToString().Trim();
             string password = txtPassword.Text.ToString();
@@ -70,7 +70,7 @@ namespace WebApplication2
                     // Date parsing failed
                     //lblMessage.Text = "Invalid Date of Birth";
                 }
-                string filename = ImgUpload.FileName;
+                filename = ImgUpload.FileName;
                 ImgUpload.SaveAs(Server.MapPath("images//" + filename));
             }
 
@@ -89,7 +89,7 @@ namespace WebApplication2
             cmd.Parameters.AddWithValue("@Image", filename);
             cmd.Parameters.AddWithValue("@Password", password);
             cmd.ExecuteNonQuery();
-            cmd.Close();
+            con.Close(); // Close the SqlConnection object
         }
         void FnClearData()
         {
