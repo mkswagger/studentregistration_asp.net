@@ -15,17 +15,25 @@ namespace WebApplication2
     public partial class WebForm2 : System.Web.UI.Page
     {
         private object lblMessage;
+        private object rblGender;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            FnBindCourse();
+            if (!Page.IsPostBack)
+            {
+                FnBindCourse();
+            }
+           
         }
 
         void FnBindCourse()
         {
             SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString);
-            string query = "select * from coursedetails";
-            SqlCommand cmd = new SqlCommand(query, con);
+     
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "CatCourse";
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
             DataTable dt = new DataTable();
             SqlDataAdapter adp = new SqlDataAdapter(cmd);
             adp.Fill(dt);
@@ -36,14 +44,16 @@ namespace WebApplication2
             ddlCourse.DataBind();
         }
 
-        protected void btnRegister_Click(object sender, EventArgs e)
+        void SaveStudentDetails()
         {
-           string name=txtName.Text.ToString();
-           string mobile=txtMobile.Text.ToString();
-           string email=txtEmail.Text.ToString();
-           string course=ddlCourse.SelectedItem.ToString();
-       
-           string date=txtDOB.Text.ToString().Trim();
+            string name = txtName.Text.ToString();
+            string mobile = txtMobile.Text.ToString();
+            string email = txtEmail.Text.ToString();
+            string course = ddlCourse.SelectedItem.ToString();
+            string gender = rblGender.SelectedItem.Text.ToString();
+            string date = txtDOB.Text.ToString().Trim();
+            string password = txtPassword.Text.ToString();
+            string filename = "";
 
             if (ImgUpload.HasFiles)
             {
@@ -60,11 +70,42 @@ namespace WebApplication2
                     // Date parsing failed
                     //lblMessage.Text = "Invalid Date of Birth";
                 }
-                string filename=ImgUpload.FileName;
+                string filename = ImgUpload.FileName;
                 ImgUpload.SaveAs(Server.MapPath("images//" + ImgUpload.FileName));
             }
-           
+
+            SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "Save_Student_Details";
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Name", name);
+            cmd.Parameters.AddWithValue("@Mobile", mobile);
+            cmd.Parameters.AddWithValue("@Email", email);
+            cmd.Parameters.AddWithValue("@Gender", gender);
+            cmd.Parameters.AddWithValue("@DOB", date);
+            cmd.Parameters.AddWithValue("@Course", course);
+            cmd.Parameters.AddWithValue("@Image", filename);
+            cmd.Parameters.AddWithValue("@Password", password);
+            cmd.ExecuteNonQuery();
+            cmd.Close();
         }
+        void FnClearData()
+        {
+            txtDOB.Text = "";
+            txtEmail.Text = "";
+            txtMobile.Text = "";
+            ddlCourse.SelectedIndex = 0;
+        }
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            SaveStudentDetails();
+            FnClearData();
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "Registered Successfully");
+        }
+
+        
 
         protected void btnReset_Click(object sender, EventArgs e)
         {

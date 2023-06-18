@@ -157,11 +157,14 @@
             
         </tr>
         <tr>
-            <td>Gender</td>
-            <td>
-                <asp:RadioButton ID="rbOption1" runat="server" Text="Male" Checked="True" GroupName="genderGroup" />
-                <asp:RadioButton ID="rbOption2" runat="server" Text="Female" GroupName="genderGroup" />
-            </td>
+          <td>
+             Gender
+          </td>  
+           <td id="rblGender">
+             <asp:RadioButton ID="rbOption1" runat="server" Text="Male" Checked="True" GroupName="genderGroup" />
+             <asp:RadioButton ID="rbOption2" runat="server" Text="Female" GroupName="genderGroup" />
+           </td>
+
         </tr>
         <tr>
             <td>Image</td>
