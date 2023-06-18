@@ -100,8 +100,11 @@ namespace WebApplication2
         {
             SaveStudentDetails();
             FnClearData();
+            /*string script = "alert('Registered Successfully');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "success", script, true);*/
             string script = "alert('Registered Successfully');";
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "success", script, true);
+            script += "window.open('studentdetails.aspx', '_blank');"; // Change 'registration-success.aspx' to the URL of your success page
+            ClientScript.RegisterStartupScript(this.GetType(), "success", script, true);
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
