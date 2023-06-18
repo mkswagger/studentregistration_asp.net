@@ -14,22 +14,18 @@ namespace WebApplication2
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
-        private object lblMessage;
-        private object rblGender;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 FnBindCourse();
             }
-           
         }
 
         void FnBindCourse()
         {
             SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString);
-     
+
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "CatCourse";
             cmd.Connection = con;
@@ -91,6 +87,7 @@ namespace WebApplication2
             cmd.ExecuteNonQuery();
             con.Close(); // Close the SqlConnection object
         }
+
         void FnClearData()
         {
             txtDOB.Text = "";
@@ -98,18 +95,18 @@ namespace WebApplication2
             txtMobile.Text = "";
             ddlCourse.SelectedIndex = 0;
         }
+
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             SaveStudentDetails();
             FnClearData();
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "Registered Successfully");
+            string script = "alert('Registered Successfully');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "success", script, true);
         }
-
-        
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
-
+            // Code for reset button click goes here
         }
     }
 }
