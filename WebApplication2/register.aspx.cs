@@ -45,7 +45,7 @@ namespace WebApplication2
             string name = txtName.Text.ToString();
             string mobile = txtMobile.Text.ToString();
             string email = txtEmail.Text.ToString();
-            string courses = ddlCourse.SelectedValue.ToString();
+            string courses = ddlCourse.SelectedItem.Text.ToString();
             string gender = rblGgender.SelectedItem.Text.ToString();
             string date = txtDOB.Text.ToString().Trim();
             string password = txtPassword.Text.ToString();
