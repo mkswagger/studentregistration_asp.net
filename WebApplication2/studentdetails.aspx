@@ -150,7 +150,7 @@
                         <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" CausesValidation="False" />
+                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="False" />
                     </td>
                 </tr>
             </table>
@@ -174,10 +174,21 @@
                              <asp:ListItem Value="2">Female</asp:ListItem>
                          </asp:RadioButtonList>
                      </td>
+                     <td>&nbsp;</td>
                     <td>Course:
                         <asp:DropDownList ID="ddlSearchCourse" runat="server">
                        </asp:DropDownList>
                     </td>
+
+                    
+
+       
+                     <td>
+                         <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
+                         &nbsp;&nbsp;&nbsp;
+                         <asp:Button ID="btnAddNew" runat="server" OnClick="btnAddnew_Click" Text="Addnew" />
+                     </td>
+
                     
 
        
