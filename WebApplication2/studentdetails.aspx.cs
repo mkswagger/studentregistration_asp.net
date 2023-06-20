@@ -35,5 +35,15 @@ namespace WebApplication2
                 }
             }
         }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
