@@ -35,6 +35,18 @@
             </table>
         </asp:Panel>
         <asp:Panel ID="pnlShow" runat="server">
+            <table>
+                <tr>
+                     <td>
+                           Name
+                     </td>
+                 <td>
+                        <asp:TextBox ID="TextBox1" runat="server" Autocomplete="off" PlaceHolder="Name" ></asp:TextBox>
+                 </td>
+       
+          </tr>
+            </table>
+            
             <asp:GridView ID="gvStudentDetails" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal">
                 <Columns>
                     <asp:BoundField DataField="ID" HeaderText="ID" />
