@@ -30,6 +30,14 @@ namespace WebApplication2
                 string query = "SELECT      [Name]   ,[Mobile]     ,[Gender]    ,[Course] FROM [studentdetails].[dbo].[stud_details] WHERE 1=1";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
+                    if (name != "")
+                        query += " Name=' " + name + "'";
+
+                    if (gender != "")
+                        query += " and gender='" + gender + "'";
+
+                    if (courses != "")
+                        query += " and course ='" + courses + "'";
                     con.Open();
                     DataTable dt = new DataTable();
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);
@@ -38,6 +46,7 @@ namespace WebApplication2
 
                     gvStudentDetails.DataSource = dt;
                     gvStudentDetails.DataBind();
+                    
                 }
             }
         }
