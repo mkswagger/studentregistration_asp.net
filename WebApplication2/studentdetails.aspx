@@ -3,9 +3,41 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <center>
+        <style>
+            .modalBackground{
+                background-color:black;
+                filter: alpha(opacity=90);
+                opacity:0.8;
+            }
+            .modalPopup {
+            background-color: #ddd;
+            border-width: 3px;
+            border-style: solid;
+            border-color: black;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            width: 90%;
+            height: auto;
+            max-height: 99%;
+            border-radius: 25px;
+        }
+    </style>
+        
         <br />
         <h1>Student Details</h1>
         <br />
+        
+        <ajaxToolkit:ModalPopupExtender ID="mpeConfirmation" runat="server" TargetControlID="lblPopup" PopupControlID="pnlPopup" CancelControlID="btnCancel" BackgroundCssClass="modalBackground"></ajaxToolkit:ModalPopupExtender>
+            
+            
+        
+        <asp:Panel ID="pnlPopup" runat="server" CssClass="modalPopup">
+            <h1>Delete Confirmation</h1>
+            <br />
+            <h3>Are You sure you want to delete this record?</h3>
+            <asp:Button ID="btnClose" runat="server" Text="Close"  />
+        </asp:Panel>
+        <asp:LinkButton ID="lblPopup" runat="server"></asp:LinkButton>
         <asp:Panel ID="pnlAdd" runat="server" Visible="false">
             <table class="registration-form">
                 <tr>
@@ -206,6 +238,7 @@
                     <asp:BoundField DataField="Image" HeaderText="Image" />
                     <asp:BoundField DataField="Password" HeaderText="Password" />
                     <asp:ButtonField ButtonType="Button" CausesValidation="True" CommandName="upd" Text="Edit" ImageUrl="\WebApplication2\images\wp1.jpg" />
+                    <asp:ButtonField ButtonType="Button" CommandName="dlt" Text="Delete" />
                 </Columns>
                 <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
                 <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />

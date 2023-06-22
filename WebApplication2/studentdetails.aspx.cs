@@ -82,6 +82,16 @@ namespace WebApplication2
                 ViewState["ID"] = row.Cells[1].Text;
                 btnRegister.Text = "Update";
             }
+            else if (e.CommandName == "dlt")
+            {
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvStudentDetails.Rows[rowIndex];
+                string name = row.Cells[1].Text; // Get the name from the row
+
+                // Show the confirmation popup
+                lblPopup.Text = name;
+                mpeConfirmation.Show();
+            }
         }
 
         protected void ddlSearchCourse_SelectedIndexChanged(object sender, EventArgs e)
@@ -195,7 +205,7 @@ namespace WebApplication2
             int id = 1;
             int cmdtype = 1;
 
-            if (btnRegister.Text == "Submit")
+            if (btnRegister.Text == "Register")
             {
                 id = 0;
                 cmdtype = 1;
