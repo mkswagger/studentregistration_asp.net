@@ -110,8 +110,7 @@
             </td>
             <td style="height: 35px">
                 
-               <asp:DropDownList ID="ddlCourse" runat="server" OnSelectedIndexChanged=" ddlCourse_SelectedIndexChanged" AutoPostBack="True">
-     
+               <asp:DropDownList ID="ddlCourse" runat="server" >
         
             </asp:DropDownList>
             </td>
@@ -168,7 +167,7 @@
 
        
                      <td>Gender:
-                         <asp:RadioButtonList ID="rblSearchGender" runat="server" RepeatDirection="Horizontal">
+                         <asp:RadioButtonList ID="rblSearchGender" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="rblSearchGender_SelectedIndexChanged" AutoPostBack="True">
                              <asp:ListItem Value="-1">All</asp:ListItem>
                              <asp:ListItem Value="1">Male</asp:ListItem>
                              <asp:ListItem Value="2">Female</asp:ListItem>
@@ -176,7 +175,7 @@
                      </td>
                      <td>&nbsp;</td>
                     <td>Course:
-                        <asp:DropDownList ID="ddlSearchCourse" runat="server">
+                        <asp:DropDownList ID="ddlSearchCourse" runat="server" OnSelectedIndexChanged="ddlSearchCourse_SelectedIndexChanged" AutoPostBack="True">
                        </asp:DropDownList>
                     </td>
 
@@ -195,7 +194,7 @@
           </tr>
             </table>
             
-            <asp:GridView ID="gvStudentDetails" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" OnRowCommand="gvStudentDetails_RowCommand">
+            <asp:GridView ID="gvStudentDetails" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" OnRowCommand="gvStudentDetails_RowCommand" Font-Bold="True">
                 <Columns>
                     <asp:BoundField DataField="ID" HeaderText="ID" />
                     <asp:BoundField DataField="Name" HeaderText="Name" />
