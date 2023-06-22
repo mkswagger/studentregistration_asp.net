@@ -98,6 +98,29 @@ namespace WebApplication2
                 filename = ImgUpload.FileName;
                 ImgUpload.SaveAs(Server.MapPath("images//" + filename));
             }
+            int ID = 1;
+            int Cmdtype = 1;
+
+            if (btnRegister.Text == "Submit")
+            {
+                ID = 0;
+                Cmdtype = 1;
+            }
+            if (ViewState["ID"] != null && int.TryParse(ViewState["ID"].ToString(), out int id))
+            {
+                ID = id;
+                Cmdtype = 2;
+            }
+            else
+            {
+                // Handle the case when ViewState["ID"] is null or not a valid integer
+                // You can set a default value or display an error message
+                // For example:
+                ID = 0;
+                Cmdtype = 1;
+            }
+
+
 
             SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString);
             con.Open();
@@ -167,6 +190,7 @@ namespace WebApplication2
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
+            FnClearData();
             pnlShow.Visible = true;
             pnlAdd.Visible = false;
         }
@@ -180,6 +204,42 @@ namespace WebApplication2
         {
             pnlAdd.Visible = true;
             pnlShow.Visible = false;
+        }
+
+        protected void gvStudentDetails_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "upd")
+            {
+                int index = int.Parse(e.CommandArgument.ToString());
+                txtName.Text = gvStudentDetails.Rows[index].Cells[1].Text.ToString();
+                txtMobile.Text = gvStudentDetails.Rows[index].Cells[2].Text.ToString();
+                txtEmail.Text = gvStudentDetails.Rows[index].Cells[3].Text.ToString();
+
+                string genderText = gvStudentDetails.Rows[index].Cells[4].Text.ToString();
+                ListItem listItem = rblGgender.Items.FindByText(genderText);
+
+                if (listItem != null)
+                {
+                    rblGgender.Text = listItem.Value;
+                }
+                else
+                {
+                    // Handle the case when no matching item is found
+                    // You can set a default value or display an error message
+                    rblGgender.SelectedIndex = -1; // Select no item
+                }
+
+                pnlShow.Visible = false;
+                pnlAdd.Visible = true;
+                ViewState["ID"] = gvStudentDetails.Rows[index].Cells[1].Text.ToString();
+                btnRegister.Text = "Update";
+            }
+        }
+
+        protected void ddlCourse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Code logic to handle the selected index change event of the ddlCourse dropdown
+            // Add your desired functionality here
         }
     }
 }

@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\WebApplication2"
+    "\\WebApplication2",
+    "\\WebApplication2\\images"
   ],
-  "SelectedNode": "\\WebApplication2\\register.aspx",
+  "SelectedNode": "\\WebApplication2.sln",
   "PreviewInSolutionExplorer": false
 }

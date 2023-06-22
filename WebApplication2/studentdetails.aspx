@@ -105,12 +105,12 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="height: 35px">
                 Course
             </td>
-            <td>
+            <td style="height: 35px">
                 
-               <asp:DropDownList ID="ddlCourse" runat="server">
+               <asp:DropDownList ID="ddlCourse" runat="server" OnSelectedIndexChanged=" ddlCourse_SelectedIndexChanged" AutoPostBack="True">
      
         
             </asp:DropDownList>
@@ -195,7 +195,7 @@
           </tr>
             </table>
             
-            <asp:GridView ID="gvStudentDetails" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal">
+            <asp:GridView ID="gvStudentDetails" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" OnRowCommand="gvStudentDetails_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="ID" HeaderText="ID" />
                     <asp:BoundField DataField="Name" HeaderText="Name" />
@@ -206,7 +206,7 @@
                     <asp:BoundField DataField="Course" HeaderText="Course" />
                     <asp:BoundField DataField="Image" HeaderText="Image" />
                     <asp:BoundField DataField="Password" HeaderText="Password" />
-                    <asp:ButtonField ButtonType="Button" CausesValidation="True" CommandName="upd" Text="Edit" />
+                    <asp:ButtonField ButtonType="Button" CausesValidation="True" CommandName="upd" Text="Edit" ImageUrl="\WebApplication2\images\wp1.jpg" />
                 </Columns>
                 <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
                 <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
@@ -220,7 +220,7 @@
         </asp:Panel>
 
         <br />
-        <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
+        
     </center>
 
     <script type="text/javascript">
