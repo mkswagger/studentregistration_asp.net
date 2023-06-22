@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Configuration;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace WebApplication2
 {
@@ -19,39 +21,33 @@ namespace WebApplication2
 
         void FnGetStudentDetails()
         {
-            string name = txtName.Text.ToString();
-            string gender = rblGgender.SelectedItem.Text.ToString();
-            string courses = ddlCourse.SelectedItem.Text.ToString();
+            string name = txtSearchName.Text.Trim();
+            string gender = rblSearchGender.SelectedItem?.Text;
+            string course = ddlSearchCourse.SelectedItem?.Text;
+            SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString);
+            SqlCommand cmd = con.CreateCommand();
+            string query = "select name,gender,course from stud_details where 1=1";
+            if (name != "")
+                query += " and name like '" + name + "%";
+            if (gender != "All")
+                query += "and gender ='" + gender + "'";
+            if (course != "All")
+                query += " and course ='" + course + "'";
+            cmd.CommandText = query;
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.Text;
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            adp.Fill(dt);
+             gvStudentDetails.DataSource = dt;
+              gvStudentDetails.DataBind();
+               
+            
+        } 
 
-            string connectionString = WebConfigurationManager.ConnectionStrings["conString"].ConnectionString;
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                string query = "SELECT      [Name]   ,[Mobile]     ,[Gender]    ,[Course] FROM [studentdetails].[dbo].[stud_details] WHERE 1=1";
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    if (name != "")
-                        query += " Name=' " + name + "'";
 
-                    if (gender != "")
-                        query += " and gender='" + gender + "'";
-
-                    if (courses != "")
-                        query += " and course ='" + courses + "'";
-                    con.Open();
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                    adp.Fill(dt);
-                    con.Close();
-
-                    gvStudentDetails.DataSource = dt;
-                    gvStudentDetails.DataBind();
-                    
-                }
-            }
-        }
-
-        void SaveStudentDetails()
+       void SaveStudentDetails()
         {
             string name = txtName.Text.ToString();
             string mobile = txtMobile.Text.ToString();
@@ -120,6 +116,9 @@ namespace WebApplication2
             ddlSearchCourse.DataTextField = "CourseName";
             ddlSearchCourse.DataValueField = "CourseID";
             ddlSearchCourse.DataBind();
+            ListItem li = new ListItem("All","-1");
+            ddlSearchCourse.Items.Insert(0, li);
+
 
 
         }
