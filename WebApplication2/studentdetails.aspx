@@ -26,8 +26,7 @@
                 <tr>
             <td>&nbsp;</td>
             <td>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please enter your name"  Font-Size="Small" ForeColor="Red" ControlToValidate ="txtName"></asp:RequiredFieldValidator>
-            </td>
+                &nbsp;</td>
 
         </tr>
         <tr>
@@ -170,6 +169,7 @@
        
                      <td>Gender:
                          <asp:RadioButtonList ID="rblSearchGender" runat="server" RepeatDirection="Horizontal">
+                             <asp:ListItem Value="-1">All</asp:ListItem>
                              <asp:ListItem Value="1">Male</asp:ListItem>
                              <asp:ListItem Value="2">Female</asp:ListItem>
                          </asp:RadioButtonList>
@@ -206,6 +206,7 @@
                     <asp:BoundField DataField="Course" HeaderText="Course" />
                     <asp:BoundField DataField="Image" HeaderText="Image" />
                     <asp:BoundField DataField="Password" HeaderText="Password" />
+                    <asp:ButtonField ButtonType="Button" CausesValidation="True" CommandName="upd" Text="Edit" />
                 </Columns>
                 <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
                 <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />

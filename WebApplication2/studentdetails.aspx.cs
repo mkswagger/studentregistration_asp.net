@@ -21,33 +21,55 @@ namespace WebApplication2
 
         void FnGetStudentDetails()
         {
-            string name = txtSearchName.Text.Trim();
-            string gender = rblSearchGender.SelectedItem?.Text;
-            string course = ddlSearchCourse.SelectedItem?.Text;
-            SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString);
-            SqlCommand cmd = con.CreateCommand();
-            string query = "select name,gender,course from stud_details where 1=1";
-            if (name != "")
-                query += " and name like '" + name + "%";
-            if (gender != "All")
-                query += "and gender ='" + gender + "'";
-            if (course != "All")
-                query += " and course ='" + course + "'";
-            cmd.CommandText = query;
-            cmd.Connection = con;
-            cmd.CommandType = CommandType.Text;
-            DataTable dt = new DataTable();
-            SqlDataAdapter adp = new SqlDataAdapter(cmd);
-            adp.Fill(dt);
-             gvStudentDetails.DataSource = dt;
-              gvStudentDetails.DataBind();
-               
+              string name = txtSearchName.Text.Trim();
+                string gender = rblSearchGender.SelectedItem?.Text;
+                string course = ddlSearchCourse.SelectedItem?.Text;
+
+                SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString);
+                SqlCommand cmd = con.CreateCommand();
+
+                string query = "SELECT ID, Mobile,Name, Gender, Course,Email,DOB,Image,Password FROM [studentdetails].[dbo].[stud_details] WHERE 1=1";
+
+                if (!string.IsNullOrEmpty(name))
+                    query += " AND name LIKE @Name";
+                if (!string.IsNullOrEmpty(gender) && gender != "All")
+                    query += " AND gender = @Gender";
+                if (!string.IsNullOrEmpty(course) && course != "All")
+                    query += " AND course = @Course";
+
+                cmd.CommandText = query; // Set the command text
+
+                if (!string.IsNullOrEmpty(name))
+                    cmd.Parameters.AddWithValue("@Name", name + "%");
+                if (!string.IsNullOrEmpty(gender) && gender != "All")
+                    cmd.Parameters.AddWithValue("@Gender", gender);
+                if (!string.IsNullOrEmpty(course) && course != "All")
+                    cmd.Parameters.AddWithValue("@Course", course);
+
+                con.Open();
+
+                DataTable studentDataTable = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(studentDataTable);
+
+                con.Close();
+
+                gvStudentDetails.DataSource = studentDataTable;
+                gvStudentDetails.DataBind();
             
-        } 
 
 
 
-       void SaveStudentDetails()
+
+
+
+
+
+        }
+
+
+
+        void SaveStudentDetails()
         {
             string name = txtName.Text.ToString();
             string mobile = txtMobile.Text.ToString();
@@ -151,7 +173,7 @@ namespace WebApplication2
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-
+            FnGetStudentDetails();
         }
 
         protected void btnAddnew_Click(object sender, EventArgs e)
