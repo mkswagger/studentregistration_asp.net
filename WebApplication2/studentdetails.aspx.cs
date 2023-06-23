@@ -51,45 +51,51 @@ namespace WebApplication2
             if (e.CommandName == "upd")
             {
                 int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = gvStudentDetails.Rows[index];
+                ViewState["ID"] = gvStudentDetails.Rows[index].Cells[0].Text.ToString();
+                // GridViewRow row = gvStudentDetails.Rows[index];
+                ViewState["Cmdtype"] = 2;
 
-                string name = row.Cells[2].Text;
-                string mobile = row.Cells[3].Text;
-                string email = row.Cells[4].Text;
+                txtName.Text = gvStudentDetails.Rows[index].Cells[1].Text.ToString();
+                txtMobile.Text = gvStudentDetails.Rows[index].Cells[2].Text.ToString();
+                txtEmail.Text = gvStudentDetails.Rows[index].Cells[3].Text.ToString();
+                rblGgender.SelectedValue = rblGgender.Items.FindByText(gvStudentDetails.Rows[index].Cells[4].Text.ToString()).Value;
+                ddlCourse.SelectedValue = ddlCourse.Items.FindByText(gvStudentDetails.Rows[index].Cells[5].Text.ToString()).Value;
+                
 
-                RadioButtonList rblGgender = row.FindControl("rblGgender") as RadioButtonList;
+                /* RadioButtonList rblGgender = row.FindControl("rblGgender") as RadioButtonList;
 
-                if (rblGgender != null)
-                {
-                    string gender = rblGgender.SelectedItem?.Text;
+                 if (rblGgender != null)
+                 {
+                     string gender = rblGgender.SelectedItem?.Text;
 
-                    if (gender != null)
-                    {
-                        txtName.Text = name;
-                        txtMobile.Text = mobile;
-                        txtEmail.Text = email;
+                     if (gender != null)
+                     {
+                         txtName.Text = name;
+                         txtMobile.Text = mobile;
+                         txtEmail.Text = email;
 
-                        ListItem listItem = rblGgender.Items.FindByText(gender);
-                        if (listItem != null)
-                        {
-                            rblGgender.SelectedValue = listItem.Value;
-                        }
-                    }
-                }
+                         ListItem listItem = rblGgender.Items.FindByText(gender);
+                         if (listItem != null)
+                         {
+                             rblGgender.SelectedValue = listItem.Value;
+                         }
+                     }
+                 }*/
 
                 pnlShow.Visible = false;
                 pnlAdd.Visible = true;
-                ViewState["ID"] = row.Cells[1].Text;
+               // ViewState["ID"] = row.Cells[1].Text;
                 btnRegister.Text = "Update";
             }
             else if (e.CommandName == "dlt")
             {
-                int rowIndex = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = gvStudentDetails.Rows[rowIndex];
-                string name = row.Cells[1].Text; // Get the name from the row
-
+                int index = Convert.ToInt32(e.CommandArgument);
+               // GridViewRow row = gvStudentDetails.Rows[rowIndex];
+                //string name = row.Cells[1].Text; // Get the name from the row
+                ViewState["ID"] = gvStudentDetails.Rows[index].Cells[0].Text.ToString();
+                ViewState["Cmdtype"] = 3;
                 // Show the confirmation popup
-                lblPopup.Text = name;
+                pnlPopup.Visible = true;
                 mpeConfirmation.Show();
             }
         }
@@ -102,6 +108,11 @@ namespace WebApplication2
         protected void rblSearchGender_SelectedIndexChanged(object sender, EventArgs e)
         {
             FnGetStudentDetails();
+        }
+
+        protected void btnYes_Click(object sender, EventArgs e)
+        {
+
         }
 
 
@@ -216,13 +227,11 @@ namespace WebApplication2
                 id = parsedId;
                 cmdtype = 2;
             }
-            else
+            else if (btnRegister.Text == "Update")
             {
                 // Handle the case when ViewState["ID"] is null or not a valid integer
                 // You can set a default value or display an error message
-                // For example:
-                id = 0;
-                cmdtype = 1;
+                return;
             }
 
             using (SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString))
@@ -279,10 +288,17 @@ namespace WebApplication2
 
         private void FnClearData()
         {
-            txtName.Text = "";
-            txtMobile.Text = "";
-            txtEmail.Text = "";
+            txtName.Text = string.Empty;
+            txtMobile.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtDOB.Text = string.Empty;
+            txtPassword.Text = string.Empty;
+            rblGgender.ClearSelection();
             ddlCourse.SelectedIndex = 0;
+            ImgUpload.Attributes.Clear();
+            ViewState["ID"] = null;
+            ViewState["Cmdtype"] = null;
+            btnRegister.Text = "Register";
         }
     }
 }

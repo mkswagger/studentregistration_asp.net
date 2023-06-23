@@ -30,13 +30,17 @@
         <ajaxToolkit:ModalPopupExtender ID="mpeConfirmation" runat="server" TargetControlID="lblPopup" PopupControlID="pnlPopup" CancelControlID="btnCancel" BackgroundCssClass="modalBackground"></ajaxToolkit:ModalPopupExtender>
             
             
-        
-        <asp:Panel ID="pnlPopup" runat="server" CssClass="modalPopup">
-            <h1>Delete Confirmation</h1>
-            <br />
-            <h3>Are You sure you want to delete this record?</h3>
-            <asp:Button ID="btnClose" runat="server" Text="Close"  />
-        </asp:Panel>
+    <asp:Panel ID="pnlPopup" runat="server" CssClass="modalPopup" Visible="false">
+    <div class="popup-content">
+        <h3>Confirmation</h3>
+        <p>Are you sure you want to delete this student?</p>
+        <div class="btn-wrapper">
+            <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="btnYes_Click" />
+            <asp:Button ID="btnNo" runat="server" Text="No" />
+        </div>
+    </div>
+</asp:Panel>
+<ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" runat="server" PopupControlID="pnlPopup" BackgroundCssClass="modalBackground"></ajaxToolkit:ModalPopupExtender>
         <asp:LinkButton ID="lblPopup" runat="server"></asp:LinkButton>
         <asp:Panel ID="pnlAdd" runat="server" Visible="false">
             <table class="registration-form">
