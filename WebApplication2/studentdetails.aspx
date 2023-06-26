@@ -21,6 +21,9 @@
             max-height: 99%;
             border-radius: 25px;
         }
+            .auto-style1 {
+                height: 35px;
+            }
     </style>
         
         <br />
@@ -141,10 +144,10 @@
             </td>
         </tr>
         <tr>
-            <td style="height: 35px">
+            <td class="auto-style1">
                 Course
             </td>
-            <td style="height: 35px">
+            <td class="auto-style1">
                 
                <asp:DropDownList ID="ddlCourse" runat="server" >
         
@@ -152,6 +155,20 @@
             </td>
             
         </tr>
+                <tr>
+                    <td style="height: 35px">Country</td>
+                    <td style="height: 35px">
+                        <asp:DropDownList ID="ddlCountry" runat="server">
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height: 35px">State</td>
+                    <td style="height: 35px">
+                        <asp:DropDownList ID="ddlState" runat="server">
+                        </asp:DropDownList>
+                    </td>
+                </tr>
         <tr>
           <td>
              Gender

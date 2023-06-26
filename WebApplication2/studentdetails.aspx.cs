@@ -16,7 +16,11 @@ namespace WebApplication2
             if (!IsPostBack)
             {
                 FnBindCourse();
+                FnBindCountry();
+                FnBindState();
                 FnGetStudentDetails();
+               
+               
             }
         }
 
@@ -302,6 +306,33 @@ namespace WebApplication2
             }
         }
 
+        private void FnBindCountry()
+        {
+            SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString);
+            string query = "select * from country_master";
+            SqlCommand cmd = new SqlCommand(query, con);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            adp.Fill(dt);
+            ddlCountry.DataSource = dt;
+            ddlCountry.DataTextField = "CountryName"; // Replace "CountryName" with the actual column name for displaying the country name
+            ddlCountry.DataValueField = "CountryID"; // Replace "CountryID" with the actual column name for storing the country ID
+            ddlCountry.DataBind();
+        }
+
+        private void FnBindState()
+        {
+            SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString);
+            string query = "select * from state_master";
+            SqlCommand cmd = new SqlCommand(query, con);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            adp.Fill(dt);
+            ddlState.DataSource = dt;
+            ddlState.DataTextField = "StateName"; 
+            ddlState.DataValueField = "StateID";  
+            ddlState.DataBind();
+        }
         private void FnClearData()
         {
             txtName.Text = string.Empty;
