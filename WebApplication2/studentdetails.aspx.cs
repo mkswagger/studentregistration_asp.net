@@ -22,6 +22,7 @@ namespace WebApplication2
                
                
             }
+            ddlCountry.SelectedIndexChanged += new EventHandler(ddlCountry_SelectedIndexChanged);
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
@@ -125,6 +126,10 @@ namespace WebApplication2
         protected void rblSearchGender_SelectedIndexChanged(object sender, EventArgs e)
         {
             FnGetStudentDetails();
+        }
+        protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FnBindState();
         }
 
         protected void btnYes_Click(object sender, EventArgs e)
@@ -322,16 +327,27 @@ namespace WebApplication2
 
         private void FnBindState()
         {
-            SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString);
-            string query = "select * from state_master";
-            SqlCommand cmd = new SqlCommand(query, con);
-            DataTable dt = new DataTable();
-            SqlDataAdapter adp = new SqlDataAdapter(cmd);
-            adp.Fill(dt);
-            ddlState.DataSource = dt;
-            ddlState.DataTextField = "StateName"; 
-            ddlState.DataValueField = "StateID";  
-            ddlState.DataBind();
+            string selectedCountryID = ddlCountry.SelectedValue;
+
+            // Retrieve the states from the database based on the selected country
+            using (SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString))
+            {
+                string query = "SELECT * FROM state_master WHERE CountryID = @CountryID";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@CountryID", selectedCountryID);
+                    con.Open();
+
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    adp.Fill(dt);
+
+                    ddlState.DataSource = dt;
+                    ddlState.DataTextField = "StateName";
+                    ddlState.DataValueField = "StateID";
+                    ddlState.DataBind();
+                }
+            }
         }
         private void FnClearData()
         {

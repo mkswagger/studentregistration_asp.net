@@ -158,7 +158,7 @@
                 <tr>
                     <td style="height: 35px">Country</td>
                     <td style="height: 35px">
-                        <asp:DropDownList ID="ddlCountry" runat="server">
+                        <asp:DropDownList ID="ddlCountry" runat="server" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged" AutoPostBack="True">
                         </asp:DropDownList>
                     </td>
                 </tr>
