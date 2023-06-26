@@ -27,7 +27,7 @@
         <h1>Student Details</h1>
         <br />
         
-        <ajaxToolkit:ModalPopupExtender ID="mpeConfirmation" runat="server" TargetControlID="lblPopup" PopupControlID="pnlPopup" CancelControlID="btnCancel" BackgroundCssClass="modalBackground"></ajaxToolkit:ModalPopupExtender>
+        <ajaxToolkit:ModalPopupExtender ID="mpeConfirmation" runat="server" TargetControlId="btnCancel" PopupControlID="pnlPopup" CancelControlID="btnCancel" BackgroundCssClass="modalBackground"></ajaxToolkit:ModalPopupExtender>
             
             
     <asp:Panel ID="pnlPopup" runat="server" CssClass="modalPopup" Visible="false">
@@ -40,7 +40,7 @@
         </div>
     </div>
 </asp:Panel>
-<ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" runat="server" PopupControlID="pnlPopup" BackgroundCssClass="modalBackground"></ajaxToolkit:ModalPopupExtender>
+
         <asp:LinkButton ID="lblPopup" runat="server"></asp:LinkButton>
         <asp:Panel ID="pnlAdd" runat="server" Visible="false">
             <table class="registration-form">

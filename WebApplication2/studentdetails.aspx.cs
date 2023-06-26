@@ -55,12 +55,24 @@ namespace WebApplication2
                 // GridViewRow row = gvStudentDetails.Rows[index];
                 ViewState["Cmdtype"] = 2;
 
-                txtName.Text = gvStudentDetails.Rows[index].Cells[1].Text.ToString();
-                txtMobile.Text = gvStudentDetails.Rows[index].Cells[2].Text.ToString();
-                txtEmail.Text = gvStudentDetails.Rows[index].Cells[3].Text.ToString();
-                rblGgender.SelectedValue = rblGgender.Items.FindByText(gvStudentDetails.Rows[index].Cells[4].Text.ToString()).Value;
-                ddlCourse.SelectedValue = ddlCourse.Items.FindByText(gvStudentDetails.Rows[index].Cells[5].Text.ToString()).Value;
-                
+                txtName.Text = gvStudentDetails.Rows[index].Cells[1].Text;
+                txtMobile.Text = gvStudentDetails.Rows[index].Cells[2].Text;
+                txtEmail.Text = gvStudentDetails.Rows[index].Cells[3].Text;
+
+                string genderText = gvStudentDetails.Rows[index].Cells[4].Text;
+                ListItem genderItem = rblGgender.Items.FindByText(genderText);
+                if (genderItem != null)
+                {
+                    rblGgender.SelectedValue = genderItem.Value;
+                }
+
+                string courseText = gvStudentDetails.Rows[index].Cells[5].Text;
+                ListItem courseItem = ddlCourse.Items.FindByText(courseText);
+                if (courseItem != null)
+                {
+                    ddlCourse.SelectedValue = courseItem.Value;
+                }
+
 
                 /* RadioButtonList rblGgender = row.FindControl("rblGgender") as RadioButtonList;
 
@@ -112,7 +124,9 @@ namespace WebApplication2
 
         protected void btnYes_Click(object sender, EventArgs e)
         {
-
+            
+            SaveStudentDetails();
+            FnGetStudentDetails();
         }
 
 
@@ -225,13 +239,21 @@ namespace WebApplication2
             if (ViewState["ID"] != null && int.TryParse(ViewState["ID"].ToString(), out int parsedId))
             {
                 id = parsedId;
-                cmdtype = 2;
+                
             }
             else if (btnRegister.Text == "Update")
             {
                 // Handle the case when ViewState["ID"] is null or not a valid integer
+                id = (int)ViewState["ID"];
+                cmdtype = 2;
+
                 // You can set a default value or display an error message
                 return;
+            }
+            else
+            {
+                id = (int)ViewState["ID"];
+                cmdtype = 3;
             }
 
             using (SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString))
