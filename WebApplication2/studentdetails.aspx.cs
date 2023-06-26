@@ -109,6 +109,7 @@ namespace WebApplication2
                 // Show the confirmation popup
                 pnlPopup.Visible = true;
                 mpeConfirmation.Show();
+                btnRegister.Text = "Delete";
             }
         }
 
@@ -151,10 +152,10 @@ namespace WebApplication2
                     e.Row.BackColor = Color.LightPink;
                 }
             }
-            if(e.Row.RowType == DataControlRowType.DataRow || e.Row.RowType== DataControlRowType.Header)
-            {
-                e.Row.Cells[0].Visible = false;
-            }
+            //if(e.Row.RowType == DataControlRowType.DataRow || e.Row.RowType== DataControlRowType.Header)
+            //{
+            //    e.Row.Cells[0].Visible = false;
+            //}
         }
 
         private void FnGetStudentDetails()
@@ -227,33 +228,26 @@ namespace WebApplication2
                 ImgUpload.SaveAs(Server.MapPath("images//" + filename));
             }
 
-            int id = 1;
-            int cmdtype = 1;
+            //int id = 1;
+            //int cmdtype = 1;
 
-            if (btnRegister.Text == "Register")
-            {
-                id = 0;
-                cmdtype = 1;
-            }
 
-            if (ViewState["ID"] != null && int.TryParse(ViewState["ID"].ToString(), out int parsedId))
+            string ID = "";
+            string cmdType = "";
+            if (btnRegister.Text == "Submit")
             {
-                id = parsedId;
-                
+                ID = "0";
+                cmdType = "1";
             }
             else if (btnRegister.Text == "Update")
             {
-                // Handle the case when ViewState["ID"] is null or not a valid integer
-                id = (int)ViewState["ID"];
-                cmdtype = 2;
-
-                // You can set a default value or display an error message
-                return;
+                ID = ViewState["ID"].ToString();
+                cmdType = "2";
             }
             else
             {
-                id = (int)ViewState["ID"];
-                cmdtype = 3;
+                ID = ViewState["ID"].ToString();
+                cmdType = "3";
             }
 
             using (SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString))
@@ -263,8 +257,8 @@ namespace WebApplication2
                 using (SqlCommand cmd = new SqlCommand("Save_Student_Details", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    cmd.Parameters.AddWithValue("@Cmdtype", cmdtype);
+                    cmd.Parameters.AddWithValue("@ID", ID);
+                    cmd.Parameters.AddWithValue("@Cmdtype", cmdType);
                     cmd.Parameters.AddWithValue("@Name", name);
                     cmd.Parameters.AddWithValue("@Mobile", mobile);
                     cmd.Parameters.AddWithValue("@Email", email);

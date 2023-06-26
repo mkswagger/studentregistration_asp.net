@@ -27,7 +27,7 @@
         <h1>Student Details</h1>
         <br />
         
-        <ajaxToolkit:ModalPopupExtender ID="mpeConfirmation" runat="server" TargetControlId="btnCancel" PopupControlID="pnlPopup" CancelControlID="btnCancel" BackgroundCssClass="modalBackground"></ajaxToolkit:ModalPopupExtender>
+        <ajaxToolkit:ModalPopupExtender ID="mpeConfirmation" runat="server" TargetControlId="lblPopup" PopupControlID="pnlPopup" CancelControlID="btnNo" BackgroundCssClass="modalBackground"></ajaxToolkit:ModalPopupExtender>
             
             
     <asp:Panel ID="pnlPopup" runat="server" CssClass="modalPopup" Visible="false">
@@ -158,8 +158,8 @@
           </td>  
            <td>
                <asp:RadioButtonList ID="rblGgender" runat="server" RepeatDirection="Horizontal">
-                      <asp:ListItem Value="1">Male</asp:ListItem>
-                      <asp:ListItem Value="2">Female</asp:ListItem>
+                      <asp:ListItem Value="1" Selected="True">Male</asp:ListItem>
+                      <asp:ListItem Value="2" >Female</asp:ListItem>
                </asp:RadioButtonList>
            </td>
 
@@ -204,7 +204,7 @@
        
                      <td>Gender:
                          <asp:RadioButtonList ID="rblSearchGender" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="rblSearchGender_SelectedIndexChanged" AutoPostBack="True">
-                             <asp:ListItem Value="-1">All</asp:ListItem>
+                             <asp:ListItem Value="-1" Selected="True">All</asp:ListItem>
                              <asp:ListItem Value="1">Male</asp:ListItem>
                              <asp:ListItem Value="2">Female</asp:ListItem>
                          </asp:RadioButtonList>
@@ -230,7 +230,7 @@
           </tr>
             </table>
             
-            <asp:GridView ID="gvStudentDetails" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" OnRowCommand="gvStudentDetails_RowCommand" Font-Bold="True">
+            <asp:GridView ID="gvStudentDetails" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" OnRowCommand="gvStudentDetails_RowCommand"  ONRowDataBound="gvStudentDetails_RowDataBound" Font-Bold ="True">
                 <Columns>
                     <asp:BoundField DataField="ID" HeaderText="ID" />
                     <asp:BoundField DataField="Name" HeaderText="Name" />
