@@ -157,6 +157,7 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="login.aspx" />
     <Content Include="register.aspx" />
+    <Content Include="statecountry.aspx" />
     <Content Include="studentdetails.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -232,6 +233,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="statecountry.aspx.cs">
+      <DependentUpon>statecountry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="statecountry.aspx.designer.cs">
+      <DependentUpon>statecountry.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
