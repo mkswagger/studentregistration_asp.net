@@ -189,5 +189,57 @@ namespace WebApplication2
                 }
             }
         }
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string countryName = txtNewCountry.Text;
+            string stateName = txtNewState.Text;
+
+            using (SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["conString"].ConnectionString))
+            {
+                con.Open();
+
+                // Insert the new country into the country_master table
+                string countryInsertQuery = "INSERT INTO country_master (CountryName) VALUES (@CountryName)";
+                using (SqlCommand countryInsertCmd = new SqlCommand(countryInsertQuery, con))
+                {
+                    countryInsertCmd.Parameters.AddWithValue("@CountryName", countryName);
+                    countryInsertCmd.ExecuteNonQuery();
+                }
+
+                // Retrieve the newly inserted country ID
+                string countryIdQuery = "SELECT SCOPE_IDENTITY()";
+                using (SqlCommand countryIdCmd = new SqlCommand(countryIdQuery, con))
+                {
+                    int countryId = Convert.ToInt32(countryIdCmd.ExecuteScalar());
+
+                    // Insert the new state into the state_master table
+                    string stateInsertQuery = "INSERT INTO state_master (StateName, CountryID) VALUES (@StateName, @CountryID)";
+                    using (SqlCommand stateInsertCmd = new SqlCommand(stateInsertQuery, con))
+                    {
+                        stateInsertCmd.Parameters.AddWithValue("@StateName", stateName);
+                        stateInsertCmd.Parameters.AddWithValue("@CountryID", countryId);
+                        stateInsertCmd.ExecuteNonQuery();
+                    }
+                }
+            }
+
+            // Reset the form and rebind the data
+            pnlAdd.Visible = false;
+            pnlShow.Visible = true;
+            //pnlSearch.Visible = true;
+            //txtNewCountry.Text = string.Empty;
+            //txtNewState.Text = string.Empty;
+
+            BindStateCountry();
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            pnlAdd.Visible = false;
+            pnlShow.Visible = true;
+           
+            //txtNewCountry.Text = string.Empty;
+            //txtNewState.Text = string.Empty;
+        }
     }
 }

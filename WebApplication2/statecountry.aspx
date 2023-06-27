@@ -72,7 +72,7 @@
                 </tr>
             <tr>
                     <td>
-                        <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" />
+                        <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
                     </td>
                     <td>
                         <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="False" />
